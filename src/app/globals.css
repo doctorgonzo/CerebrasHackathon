@@ -1,0 +1,220 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --background: #09090b;
+  --foreground: #fafafa;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  background: var(--background);
+}
+
+body {
+  background: transparent;
+  color: var(--foreground);
+}
+
+/* React Flow overrides */
+.react-flow__renderer {
+  background: transparent !important;
+}
+
+.react-flow__minimap {
+  display: none;
+}
+
+.react-flow__controls {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+}
+
+.react-flow__controls-button {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  fill: rgba(255, 255, 255, 0.5) !important;
+}
+
+.react-flow__controls-button:hover {
+  fill: rgba(255, 255, 255, 0.9) !important;
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-pop-in {
+  animation: pop-in 0.4s ease-out forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
+}
+
+.react-flow__edge-path {
+  filter: drop-shadow(0 0 3px currentColor);
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.2s ease-out;
+}
+
+/* Spawn burst glow */
+@keyframes spawn-burst {
+  0% {
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 20px 8px rgba(168, 85, 247, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
+  }
+}
+
+.animate-spawn-burst {
+  animation: spawn-burst 0.6s ease-out;
+}
+
+.animate-spawn-burst-blue {
+  animation: spawn-burst-blue 0.6s ease-out;
+}
+
+.animate-spawn-burst-green {
+  animation: spawn-burst-green 0.6s ease-out;
+}
+
+@keyframes spawn-burst-blue {
+  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.6); }
+  50% { box-shadow: 0 0 20px 8px rgba(59, 130, 246, 0.3); }
+  100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+@keyframes spawn-burst-green {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  50% { box-shadow: 0 0 20px 8px rgba(16, 185, 129, 0.3); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+@keyframes spawn-burst-fuchsia {
+  0% { box-shadow: 0 0 0 0 rgba(217, 70, 239, 0.8); }
+  50% { box-shadow: 0 0 28px 12px rgba(217, 70, 239, 0.4); }
+  100% { box-shadow: 0 0 0 0 rgba(217, 70, 239, 0); }
+}
+
+.animate-spawn-burst-fuchsia {
+  animation: spawn-burst-fuchsia 0.8s ease-out;
+}
+
+/* Done flash */
+@keyframes done-flash {
+  0% { filter: brightness(1); }
+  30% { filter: brightness(1.8); }
+  100% { filter: brightness(1); }
+}
+
+.animate-done-flash {
+  animation: done-flash 0.5s ease-out;
+}
+
+/* Shimmer sweep for synthesis overlay */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(168, 85, 247, 0.08) 25%,
+    rgba(168, 85, 247, 0.15) 50%,
+    rgba(168, 85, 247, 0.08) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Ambient glow for thinking nodes */
+@keyframes ambient-glow {
+  0%, 100% { box-shadow: 0 0 8px 2px currentColor; }
+  50% { box-shadow: 0 0 18px 6px currentColor; }
+}
+
+.animate-ambient-glow {
+  animation: ambient-glow 2s ease-in-out infinite;
+}
+
+/* Edge data flow */
+.react-flow__edge-path {
+  stroke-dasharray: 8 4;
+  stroke-dashoffset: 0;
+  animation: edge-flow 1s linear infinite;
+}
+
+@keyframes edge-flow {
+  to { stroke-dashoffset: -12; }
+}
+
+.react-flow__edge-path[style*="complete"] {
+  stroke-dasharray: none;
+  animation: none;
+}
+
+/* Synthesis overlay entrance */
+@keyframes overlay-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-overlay-in {
+  animation: overlay-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+

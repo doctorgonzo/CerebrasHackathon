@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: letter; margin: 0.6in; }
+  body { font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; color: #222; font-size: 10.5pt; line-height: 1.4; max-width: 7.5in; }
+  h1 { font-size: 22pt; margin: 0 0 4px; letter-spacing: -0.5px; }
+  h2 { font-size: 11pt; text-transform: uppercase; border-bottom: 1.5px solid #333; padding-bottom: 3px; margin: 18px 0 8px; letter-spacing: 1px; }
+  h3 { font-size: 11pt; margin: 0; }
+  .header { border-bottom: 2px solid #333; padding-bottom: 8px; margin-bottom: 12px; }
+  .contact { color: #555; font-size: 10pt; margin-top: 4px; }
+  .role { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+  .company { color: #555; font-style: italic; font-size: 10pt; }
+  .date { color: #777; font-size: 9.5pt; white-space: nowrap; }
+  ul { margin: 4px 0 8px; padding-left: 20px; }
+  li { margin: 2px 0; }
+  .entry { margin-bottom: 10px; }
+  .skills { display: grid; grid-template-columns: 130px 1fr; gap: 4px 12px; font-size: 10pt; }
+  .skills b { color: #333; }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>Priya Ramaswamy</h1>
+    <div class="contact">priya.ramaswamy@gmail.com &middot; (617) 555-0388 &middot; Cambridge, MA &middot; priyaram.dev &middot; github.com/priyaram</div>
+  </div>
+
+  <h2>Summary</h2>
+  <p>Software engineer with 4+ years of experience building backend services and data pipelines for B2B SaaS. Strong in Python, Go, and AWS. Most proud of cutting a billing-system batch job from 11 hours to 38 minutes and shipping a customer-facing analytics API used by 200+ enterprise customers.</p>
+
+  <h2>Experience</h2>
+  <div class="entry">
+    <div class="role">
+      <h3>Senior Software Engineer</h3>
+      <span class="date">Aug 2023 &mdash; Present</span>
+    </div>
+    <div class="company">Loomline (Series B SaaS, supply-chain analytics) &middot; Boston, MA</div>
+    <ul>
+      <li>Led migration of the billing reconciliation pipeline from monolithic Python cron to a Temporal workflow on Go; cut wall-clock time from 11h to 38min and eliminated weekly on-call pages</li>
+      <li>Designed and shipped v2 of the public analytics API (REST + Kafka webhooks) currently used by 200+ enterprise customers; mentored 2 engineers through the build</li>
+      <li>Owns Postgres performance: introduced pg_stat_statements review cadence, killed 4 N+1 queries each cutting p95 latency by 30%+</li>
+      <li>Tech lead for the &quot;data accuracy&quot; squad &mdash; weekly RCA reviews, on-call rotation owner</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="role">
+      <h3>Software Engineer</h3>
+      <span class="date">Jul 2021 &mdash; Aug 2023</span>
+    </div>
+    <div class="company">Loomline &middot; Boston, MA</div>
+    <ul>
+      <li>Built the original event-ingestion service in Python/FastAPI processing 40M events/day from Shopify, NetSuite, and SAP webhooks</li>
+      <li>Migrated batch ETL from Airflow to dbt + Snowflake; reduced model count from 180 to 95 while improving freshness from daily to hourly</li>
+      <li>Authored the company&apos;s first SOC 2 audit-trail service (Go, Postgres) and wrote the technical sections of the SOC 2 Type II report</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="role">
+      <h3>Software Engineering Intern</h3>
+      <span class="date">May 2020 &mdash; Aug 2020</span>
+    </div>
+    <div class="company">Wayfair &middot; Boston, MA</div>
+    <ul>
+      <li>Built an internal A/B test config dashboard (React + GraphQL) replacing a JIRA-ticket workflow used by ~40 PMs</li>
+    </ul>
+  </div>
+
+  <h2>Education</h2>
+  <div class="entry">
+    <div class="role">
+      <h3>Northeastern University &mdash; BS, Computer Science</h3>
+      <span class="date">May 2021</span>
+    </div>
+    <div class="company">GPA: 3.78 &middot; Magna Cum Laude</div>
+    <ul>
+      <li>Concentration in Software Engineering &middot; Minor in Mathematics</li>
+      <li>Honors thesis: &quot;Differential testing for SQL query optimizers&quot; &mdash; advised by Prof. K. Salem; presented at undergraduate research symposium</li>
+      <li>TA: Object-Oriented Design (2 semesters), Algorithms (1 semester)</li>
+    </ul>
+  </div>
+
+  <h2>Open Source &amp; Projects</h2>
+  <ul>
+    <li><b>pgnap</b> (Go, 1.2k GitHub stars) &mdash; CLI for snapshotting and restoring Postgres schemas; used in our CI</li>
+    <li>Contributor to <b>dbt-core</b>: 6 merged PRs around incremental model performance</li>
+    <li>Talk: &quot;Killing the 11-hour cron&quot; &mdash; Boston Python meetup, March 2025</li>
+  </ul>
+
+  <h2>Skills</h2>
+  <div class="skills">
+    <b>Languages</b><span>Python, Go, TypeScript, SQL, Java (rusty)</span>
+    <b>Backend</b><span>FastAPI, Gin, Temporal, gRPC, REST, Kafka, RabbitMQ</span>
+    <b>Data</b><span>Postgres (deep), Snowflake, dbt, Airflow, ClickHouse (basic)</span>
+    <b>Infra</b><span>AWS (ECS, RDS, S3, Lambda), Terraform, Docker, GitHub Actions, Datadog</span>
+  </div>
+</body>
+</html>
