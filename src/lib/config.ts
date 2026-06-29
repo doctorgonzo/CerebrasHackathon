@@ -25,16 +25,16 @@ export const MODES: Record<AppMode, ModeConfig> = {
     debateRounds: 3,
   },
   demo: {
-    // Cranked up for Cerebras: Gemma is fast + cheap enough that a much bigger
-    // swarm still resolves in seconds — and that density IS the wow. maxAgents
-    // is the hard cap that keeps it from running away past the route's 60s.
-    maxDepth: 6,
-    maxAgents: 200,
-    rootFanout: "6-8",
-    managerFanout: "4-5",
-    workerFanout: "3-4",
-    fallbackSplitRoot: 5,
-    fallbackSplitChild: 3,
+    // Tuned for Cerebras: big enough to read as a real swarm, small enough to
+    // stay fast and legible (the forced-split fills toward maxAgents, so that's
+    // the main dial for swarm size).
+    maxDepth: 5,
+    maxAgents: 70,
+    rootFanout: "5-6",
+    managerFanout: "3-4",
+    workerFanout: "2-3",
+    fallbackSplitRoot: 4,
+    fallbackSplitChild: 2,
     enableDebate: true,
     debateRounds: 3,
   },

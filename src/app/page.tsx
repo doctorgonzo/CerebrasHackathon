@@ -541,7 +541,9 @@ export default function Home() {
                   break;
 
                 case "action_proposed":
-                  setActions((prev) => [...prev, event.action]);
+                  // Calendar/email "add this?" nag disabled — the engine still
+                  // strips the action JSON from answers, we just don't surface
+                  // the prompt. Re-enable by restoring the setActions call.
                   break;
 
                 case "final_result":
