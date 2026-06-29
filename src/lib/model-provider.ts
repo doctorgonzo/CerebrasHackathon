@@ -15,7 +15,17 @@ const CEREBRAS_BASE_URL =
 const CEREBRAS_API_KEY = process.env.CEREBRAS_API_KEY || "";
 export const CEREBRAS_MODEL = process.env.CEREBRAS_MODEL || "gemma-4-31b";
 
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+// Construct the Anthropic client lazily — only when we actually fall back to
+// the Anthropic provider. This keeps a Cerebras-only deployment from needing
+// an ANTHROPIC_API_KEY at all (the SDK throws "could not resolve auth" the
+// moment it's constructed without a key).
+let _anthropic: Anthropic | null = null;
+function getAnthropic(): Anthropic {
+  if (!_anthropic) {
+    _anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+  }
+  return _anthropic;
+}
 
 // Normalized result so the caller doesn't care which provider answered.
 export interface RawResult {
@@ -119,7 +129,7 @@ async function anthropicCreate(
   params: Anthropic.MessageCreateParamsNonStreaming,
   signal?: AbortSignal,
 ): Promise<RawResult> {
-  const response = await anthropic.messages.create(params, { signal });
+  const response = await getAnthropic().messages.create(params, { signal });
   const textBlock = response.content.find((b) => b.type === "text");
   const text = textBlock && textBlock.type === "text" ? textBlock.text : "";
   return {
