@@ -28,7 +28,7 @@ export async function POST(req: Request) {
       });
     }
 
-    pingPresence({
+    await pingPresence({
       sessionId,
       lat,
       lng,
@@ -48,7 +48,7 @@ export async function POST(req: Request) {
 // GET /api/presence — return the current active + recent lists.
 // Strips sessionId from the response (privacy / no point exposing).
 export async function GET() {
-  const { active, recent } = getPresenceList();
+  const { active, recent } = await getPresenceList();
   const sanitize = (p: { lat: number; lng: number; city?: string; country?: string; lastSeen: number }) => ({
     lat: p.lat,
     lng: p.lng,

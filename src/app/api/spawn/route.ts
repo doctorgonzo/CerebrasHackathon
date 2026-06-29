@@ -65,7 +65,8 @@ export async function POST(req: Request) {
     const city = req.headers.get("x-vercel-ip-city");
     const country = req.headers.get("x-vercel-ip-country");
     if (Number.isFinite(lat) && Number.isFinite(lng)) {
-      pingPresence({
+      // Fire-and-forget; pingPresence swallows its own errors.
+      void pingPresence({
         sessionId,
         lat,
         lng,
